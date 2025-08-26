@@ -6,9 +6,14 @@ from django.db import models
 class Subject(models.Model):
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+            return f"Кабінет: {self.name}"
 
 class Cabinet(models.Model):
     name = models.CharField(max_length=100)
+
+    def __str__(self):
+            return f"Кабінет: {self.name}"
 
 
 class Student(models.Model):
@@ -19,4 +24,5 @@ class Student(models.Model):
     subject = models.ManyToManyField(Subject, default=None)
 
 
-
+def __str__(self):
+        return f"Студент: '{self.first_name} {self.last_name}' навчається у '{self.cabinet.name}' та вивчає такі предмети '{self.subjects.all()}'"
