@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
-from config import settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -57,10 +56,11 @@ ROOT_URLCONF = 'Schools.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "MyBeastSchools" / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -82,7 +82,7 @@ DATABASES = {
         'USER':  config('DB_USER'),
         'PASSWORD':  config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),
-        'PORT':  config('DB_PORT'),
+        'PORT':  config('DB_PORT'),  
     }
 }
 

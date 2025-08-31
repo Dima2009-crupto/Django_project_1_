@@ -74,8 +74,9 @@ def add_student(request):
                 bio=bio,
                 cabinet=cabinet,
             )
-            student.subject.set(subjects)
             student.save()
+            student.subject.add(subjects)
+            
             return redirect("get_students")
         
         return redirect("add_students") 

@@ -9,8 +9,12 @@ class SubjectForm(forms.Form):
         )
     
 
-class StudentForm(forms.Form):
-    first_name = forms.CharField(
+class StudentForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = ["first_name", "last_name", "bio", "cabinet", "subject"]
+
+        first_name = forms.CharField(
         label="Ім'я",
         widget=forms.TimeInput(attrs={"class": "form-control"})
     )
